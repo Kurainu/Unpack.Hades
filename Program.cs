@@ -12,9 +12,8 @@ namespace HadesUnpack_test
         {
             PKGReader pkgreader = new PKGReader();
 
-            PKGFile pkgfile = pkgreader.Parse(new BinaryReader(File.OpenRead(@"E:\Hades\Content\Win\Packages\Launch.pkg")));
-
-            Console.WriteLine(pkgfile);
+            PKGFile pkgfile = pkgreader.Parse(@"E:\Hades\Content\Win\Packages\Launch.pkg");
+            Console.WriteLine();
         }
     }
 }

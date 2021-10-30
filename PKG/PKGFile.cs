@@ -15,6 +15,7 @@ namespace HadesUnpack_test.PKG
         public int CompressedSize { get; set; }
         public byte[] Compressed_Data { get; set; }
         public byte[] UnCompressed_Data { get; set; }
+        public PKGManifest Manifest { get; set; }
 
     }
 }

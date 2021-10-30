@@ -22,5 +22,19 @@ namespace HadesUnpack_test
                 return BitConverter.ToInt32(BytesRead);
             }
         }
+        public static int ReadSingle(this BinaryReader reader, ByteOrder ByteOrder)
+        {
+            byte[] BytesRead = reader.ReadBytes(4);
+
+            if (ByteOrder == ByteOrder.BigEndian && BitConverter.IsLittleEndian)
+            {
+                return BitConverter.ToInt32(BytesRead.Reverse().ToArray());
+            }
+            else
+            {
+                return BitConverter.ToInt32(BytesRead);
+            }
+        }
+
     }
 }
