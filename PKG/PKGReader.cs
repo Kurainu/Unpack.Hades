@@ -31,7 +31,7 @@ namespace HadesUnpack_test.PKG
             #region Reading PKG File
             PKGFile.CompressedFlag = reader.ReadByte();
             PKGFile.CompressedSize = reader.ReadInt32(ByteOrder.BigEndian);
-            PKGFile.Compressed_Data = reader.ReadBytes(PKGFile.CompressedSize);
+            byte[] Compressed_Data = reader.ReadBytes(PKGFile.CompressedSize);
 
             if (PKGFile.CompressedFlag == 0)
             {
@@ -39,7 +39,7 @@ namespace HadesUnpack_test.PKG
             }
             // Decompress The Chunk and Trim
             LZ4Codec.Decode(PKGFile.Compressed_Data, chunk);
-            PKGFile.UnCompressed_Data = Utils.TrimEnd(chunk);
+            byte[] UnCompressed_Data = Utils.TrimEnd(chunk);
             #endregion
 
 

@@ -13,8 +13,6 @@ namespace HadesUnpack_test.PKG
         public PKGHeader Header { get; set; }
         public int CompressedFlag { get; set; }
         public int CompressedSize { get; set; }
-        public byte[] Compressed_Data { get; set; }
-        public byte[] UnCompressed_Data { get; set; }
         public PKGManifest Manifest { get; set; }
 
     }
