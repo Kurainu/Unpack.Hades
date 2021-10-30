@@ -38,7 +38,7 @@ namespace HadesUnpack_test.PKG
                 
             }
             // Decompress The Chunk and Trim
-            LZ4Codec.Decode(PKGFile.Compressed_Data, chunk);
+            LZ4Codec.Decode(Compressed_Data, chunk);
             byte[] UnCompressed_Data = Utils.TrimEnd(chunk);
             #endregion
 
@@ -65,8 +65,6 @@ namespace HadesUnpack_test.PKG
                     pkgmanifest.AtlasEntries.Add(AtlasEntry.GetEntry(reader));
                 };
             }
-
-            Console.WriteLine("Reader Pos: "+ reader.BaseStream.Position);
             return pkgmanifest;
         }
     }

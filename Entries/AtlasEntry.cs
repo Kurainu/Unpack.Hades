@@ -57,7 +57,6 @@ namespace HadesUnpack_test.Entries
 
                     if (atlasEntry.Version > 2)
                     {
-                        Console.WriteLine(reader.BaseStream.Position);
                         int hullcount = reader.ReadInt32(ByteOrder.BigEndian);
 
                         for (int j = 0; j < hullcount; j++)
