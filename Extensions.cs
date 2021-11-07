@@ -36,5 +36,19 @@ namespace HadesUnpack_test
             }
         }
 
+        public static byte[] ReadBytes(this BinaryReader reader, int Size,ByteOrder ByteOrder)
+        {
+            byte[] BytesRead = reader.ReadBytes(Size);
+
+            if (ByteOrder == ByteOrder.BigEndian && BitConverter.IsLittleEndian)
+            {
+                return BytesRead.Reverse().ToArray();
+            }
+            else
+            {
+                return BytesRead;
+            }
+        }
+
     }
 }

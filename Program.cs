@@ -12,8 +12,13 @@ namespace HadesUnpack_test
         {
             PKGReader pkgreader = new PKGReader();
 
-            PKGFile pkgfile = pkgreader.Parse(@"E:\Hades\Content\Win\Packages\Launch.pkg");
-            Console.WriteLine();
+            var Files = Directory.GetFiles(@"E:\Hades\Content\Win\Packages\","*.pkg");
+
+            foreach (var item in Files)
+            {
+                Console.WriteLine(item);
+                PKGFile pkgfile = pkgreader.Parse(@"E:\Hades\Content\Win\Packages\Erebus.pkg");
+            }
         }
     }
 }

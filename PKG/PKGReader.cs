@@ -1,5 +1,6 @@
 ﻿using HadesUnpack_test.Entries;
 using K4os.Compression.LZ4;
+using SixLabors.ImageSharp.Formats.Png;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,7 @@ namespace HadesUnpack_test.PKG
 
             PKGFile PKGFile = new PKGFile();
             PKGFile.Header = new PKGHeader();
+            PKGFile.TexturesEntries = new List<TextureEntry>();
             #endregion
 
             #region Reading PKG File Header
@@ -28,22 +30,36 @@ namespace HadesUnpack_test.PKG
             PKGFile.Header.PKGVersion = reader.ReadByte();
             #endregion
 
-            #region Reading PKG File
+            #region reading PKG Manifest
+            PKGFile.Manifest = ParseManifest(filepath+"_manifest");
+            #endregion
+
+            #region Reading PKG File and Decompressing
             PKGFile.CompressedFlag = reader.ReadByte();
             PKGFile.CompressedSize = reader.ReadInt32(ByteOrder.BigEndian);
             byte[] Compressed_Data = reader.ReadBytes(PKGFile.CompressedSize);
 
-            if (PKGFile.CompressedFlag == 0)
-            {
-                
-            }
-            // Decompress The Chunk and Trim
+            // Decompress The Chunk and Trim it
             LZ4Codec.Decode(Compressed_Data, chunk);
             byte[] UnCompressed_Data = Utils.TrimEnd(chunk);
             #endregion
 
+            #region Read Decompressed File
+            // Replace the reader with Uncompressed Data
+            reader = new BinaryReader(new MemoryStream(UnCompressed_Data));
 
-            PKGFile.Manifest = ParseManifest(filepath+"_manifest");
+            while (reader.BaseStream.Position != reader.BaseStream.Length)
+            {
+                // Reading Entry Type
+                int EntryType = reader.ReadByte();
+
+                //reading Entry 0xAD and 0xAA and converting it to a DDsFile
+                if (EntryType == 0xAD || EntryType == 0xAA)
+                {
+                    PKGFile.TexturesEntries.Add(TextureEntry.ReadEntry(reader));
+                }
+            }
+            #endregion
             return PKGFile;
         }
 
@@ -52,11 +68,13 @@ namespace HadesUnpack_test.PKG
             PKGManifest pkgmanifest = new PKGManifest();
             pkgmanifest.AtlasEntries = new List<AtlasEntry>();
             BinaryReader reader = new(File.OpenRead(manifestpath));
+
             #region Read Header
             pkgmanifest.CompressionMethod = reader.ReadByte();
             reader.ReadBytes(2); // ignoring 2 Bytes
             pkgmanifest.PackageVersion = reader.ReadByte();
             #endregion
+
             while (reader.BaseStream.Position != reader.BaseStream.Length)
             {
                 int EntryType = reader.ReadByte();
