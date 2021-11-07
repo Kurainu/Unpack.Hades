@@ -1,4 +1,4 @@
-﻿using HadesUnpack_test.Entries;
+﻿using Unpack.Hades.Entries;
 using K4os.Compression.LZ4;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HadesUnpack_test.PKG
+namespace Unpack.Hades.PKG
 {
     class PKGFile
     {
@@ -16,6 +16,5 @@ namespace HadesUnpack_test.PKG
         public int CompressedSize { get; set; }
         public PKGManifest Manifest { get; set; }
         public List<TextureEntry> TexturesEntries { get; set; }
-
     }
 }

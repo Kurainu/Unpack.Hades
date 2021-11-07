@@ -1,11 +1,11 @@
-﻿using HadesUnpack_test.Entries;
+﻿using Unpack.Hades.Entries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HadesUnpack_test.PKG
+namespace Unpack.Hades.PKG
 {
     class PKGManifest
     {

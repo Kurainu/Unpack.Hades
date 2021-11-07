@@ -1,5 +1,5 @@
-﻿using HadesUnpack_test.Entries;
-using HadesUnpack_test.PKG;
+﻿using Unpack.Hades.Entries;
+using Unpack.Hades.PKG;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HadesUnpack_test.Entries
+namespace Unpack.Hades.Entries
 {
     class AtlasEntry
     {

@@ -1,4 +1,4 @@
-﻿using HadesUnpack_test.Entries;
+﻿using Unpack.Hades.Entries;
 using K4os.Compression.LZ4;
 using SixLabors.ImageSharp.Formats.Png;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HadesUnpack_test.PKG
+namespace Unpack.Hades.PKG
 {
     class PKGReader
     {
