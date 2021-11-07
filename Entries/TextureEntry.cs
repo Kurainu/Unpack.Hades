@@ -96,5 +96,10 @@ namespace HadesUnpack_test.Entries
                     return null;
             }
         }
+
+        public void Save(string path,DdsFile ddsfile)
+        {
+            ddsfile.Write(new FileStream(path, FileMode.CreateNew));
+        }
     }
 }
