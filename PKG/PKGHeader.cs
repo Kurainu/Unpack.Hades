@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.PKG
 {
-    class PKGHeader
+    public class PKGHeader
     {
         public byte CompressionAlg { get; set; }
         public byte[] Zero  { get; set; }

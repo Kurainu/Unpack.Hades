@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.PKG
 {
-    class PKGManifest
+    public class PKGManifest
     {
         public int CompressionMethod { get; set; }
         public int PackageVersion { get; set; }
