@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.PKG
 {
-    class PKGReader
+    public class PKGReader
     {
         public PKGFile Parse(string filepath)
         {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.PKG
 {
-    class PKGFile
+    public class PKGFile
     {
         public PKGHeader Header { get; set; }
         public int CompressedFlag { get; set; }

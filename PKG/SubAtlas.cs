@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.PKG
 {
-    class SubAtlas
+    public class SubAtlas
     {
         public string Name { get; set; }
         public Rectangle Rect { get; set; }

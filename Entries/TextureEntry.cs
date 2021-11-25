@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.Entries
 {
-    class TextureEntry
+    public class TextureEntry
     {
         public string TextureName { get; set; }
         public int Imageformat { get; set; }

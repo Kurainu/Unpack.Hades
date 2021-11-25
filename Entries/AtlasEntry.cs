@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.Entries
 {
-    class AtlasEntry
+    public class AtlasEntry
     {
         public string Name { get; set; }
         public int Size { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Unpack.Hades.PKG
 {
-    class ScaleRatio
+    public class ScaleRatio
     {
         public float X { get; set; }
         public float Y { get; set; }
